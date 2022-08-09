@@ -2098,6 +2098,31 @@ describe('<Autocomplete />', () => {
         options[2],
       );
     });
+
+    it('should pass to onHighlightChange the correct value after filtering with second input value', () => {
+      const handleHighlightChange = spy();
+      const options = ['option 1 1', 'option 1 2', 'option 1 12', 'option 2 12'];
+      render(
+        <Autocomplete
+          onHighlightChange={handleHighlightChange}
+          options={options}
+          renderInput={(params) => <TextField {...params} autoFocus />}
+        />,
+      );
+      const textbox = screen.getByRole('textbox');
+
+      fireEvent.change(document.activeElement, { target: { value: '1' } });
+      fireEvent.keyDown(textbox, { key: 'ArrowDown' });
+      expect(handleHighlightChange.args[handleHighlightChange.args.length - 1][1]).to.equal(
+        options[0],
+      );
+
+      fireEvent.change(document.activeElement, { target: { value: '12' } });
+      fireEvent.keyDown(textbox, { key: 'ArrowDown' });
+      expect(handleHighlightChange.args[handleHighlightChange.args.length - 1][1]).to.equal(
+        options[2],
+      );
+    });
   });
 
   it('should filter options when new input value matches option', () => {
