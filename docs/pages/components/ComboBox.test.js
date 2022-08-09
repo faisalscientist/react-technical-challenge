@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { createClientRender, fireEvent, screen } from 'test/utils';
 import { spy } from 'sinon';
 import ComboBox from './ComboBox';
+import countries from './countries';
 
 /**
  * You can run these tests with `yarn t ComboBox`.
@@ -22,7 +23,7 @@ describe('<ComboBox />', () => {
         }}
       >
         {/* The ComboBox component here */}
-        <ComboBox onChange={handleChange} />
+        <ComboBox onChange={handleChange} options={countries} optionLabel="label" />
       </div>,
     );
 
