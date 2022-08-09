@@ -22,6 +22,7 @@ import { pathnameToLanguage, getCookie } from 'docs/src/modules/utils/helpers';
 import { ACTION_TYPES, CODE_VARIANTS, LANGUAGES } from 'docs/src/modules/constants';
 import { useUserLanguage } from 'docs/src/modules/utils/i18n';
 import StyledEngineProvider, { cacheLtr } from 'docs/src/modules/utils/StyledEngineProvider';
+import './index.scss';
 
 export { cacheLtr };
 

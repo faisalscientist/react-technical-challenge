@@ -1,0 +1,63 @@
+@mixin combobox-border {
+  border-radius: 5px;
+  border: 1px solid rgb(197, 195, 195);
+}
+
+@mixin combobox-selected {
+  background-color: rgb(233, 233, 233);
+  outline: none;
+}
+
+.combobox-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  position: relative;
+}
+
+.combobox-input-wrapper {
+  @include combobox-border;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.combobox-input {
+  @include combobox-border;
+  font-size: 1.2rem;
+  border: transparent;
+  &:focus {
+    outline: none;
+  }
+}
+
+.combobox-list {
+  @include combobox-border;
+  background-color: white;
+  width: 100%;
+  margin-top: 4.2rem;
+  position: absolute;
+  overflow-y: auto;
+  max-height: 500px;
+  & > * {
+    margin: 0.35rem 0;
+    padding: 0.35rem 1rem;
+    background-color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(247, 247, 247);
+    }
+  }
+}
+
+.combobox-remove-selection {
+  background-color: transparent;
+  border: transparent;
+  font-size: large;
+}
+
+.active-combobox {
+  @include combobox-selected;
+}
